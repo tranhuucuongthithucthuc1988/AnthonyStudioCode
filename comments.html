@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bình luận - Anthony Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="comments.css">
+</head>
+<body>
+
+    <header id="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-code"></i> ANTHONY <span>STUDIO</span>
+            </a>
+            <nav id="navbar">
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="index.html#tinh-nang">Tính năng</a></li>
+                    <li><a href="python.html">Python Online</a></li>
+                    <li><a href="comments.html" class="active">Bình luận</a></li>
+                    <li><a href="index.html#tai-ve" class="btn-nav">Tải về</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1><i class="fa-solid fa-comments"></i> Bình Luận & Đánh Giá</h1>
+            <p>Chia sẻ trải nghiệm của bạn về Anthony Studio. Mọi ý kiến đều được trân trọng!</p>
+        </div>
+    </section>
+
+    <section class="comments-section">
+        <div class="container comments-layout">
+
+            <div class="form-column">
+                <div class="form-card">
+                    <h2><i class="fa-solid fa-pen-to-square"></i> Gửi bình luận</h2>
+
+                    <div id="blocked-notice" class="blocked-notice" style="display:none;">
+                        <i class="fa-solid fa-ban"></i>
+                        <div>
+                            <strong>Tài khoản của bạn đã bị chặn</strong>
+                            <p>Bạn không thể gửi bình luận. Liên hệ admin để được mở khóa.</p>
+                        </div>
+                    </div>
+
+                    <p class="form-note">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Nội dung sẽ được <strong>kiểm duyệt tự động</strong> để loại bỏ từ ngữ tục tĩu, 18+ và spam.
+                    </p>
+
+                    <div id="reply-indicator" class="reply-indicator">
+                        <i class="fa-solid fa-reply"></i>
+                        Đang trả lời <strong id="reply-to-name"></strong>
+                        <button type="button" id="cancel-reply">✕ Hủy</button>
+                    </div>
+
+                    <form id="comment-form" novalidate>
+                        <div class="form-group">
+                            <label for="name">Tên của bạn <span class="required">*</span></label>
+                            <input type="text" id="name" maxlength="40" placeholder="VD: Nguyễn Văn A" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Nội dung bình luận <span class="required">*</span></label>
+                            <textarea id="content" rows="6" maxlength="1000" placeholder="Viết cảm nhận của bạn..." required></textarea>
+                            <div class="char-counter"><span id="char-count">0</span> / 1000</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Đính kèm ảnh (không bắt buộc)</label>
+                            <div class="file-upload" id="file-upload">
+                                <input type="file" id="image" accept="image/*" hidden>
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <span>Kéo thả ảnh vào đây hoặc <u>bấm để chọn</u></span>
+                                <small>Tối đa 10MB • JPG, PNG, GIF, WEBP</small>
+                            </div>
+                            <div id="image-preview" class="image-preview"></div>
+                        </div>
+                        <div id="form-message" class="form-message"></div>
+                        <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
+                            <i class="fa-solid fa-paper-plane"></i> <span id="submit-text">Gửi bình luận</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="list-column">
+                <div class="list-header">
+                    <h2><i class="fa-solid fa-comment-dots"></i> Bình luận</h2>
+                    <span class="comment-count" id="comment-count">0 bình luận</span>
+                </div>
+
+                <!-- Ô TÌM KIẾM -->
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Tìm theo tên hoặc nội dung...">
+                    <button type="button" id="clear-search" title="Xóa tìm kiếm">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <div id="search-info" class="search-info" style="display:none;"></div>
+
+                <div id="comments-list" class="comments-list"></div>
+                <div id="empty-state" class="empty-state">
+                    <i class="fa-regular fa-comment"></i>
+                    <p>Chưa có bình luận nào. Hãy là người đầu tiên!</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Made with <i class="fa-solid fa-hammer"></i> by Anthony. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="image-modal" class="image-modal">
+        <span class="close-modal">&times;</span>
+        <img id="modal-image" src="" alt="Ảnh lớn">
+    </div>
+
+    <script type="module" src="comments.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "JIANGSHI: CURSED MIST - WebGL Horror Engine & Technical Blueprint",
+  "description": "Photorealistic 3D first-person survival horror engine blueprint and playable WebGL prototype featuring blind hearing-sensitive AI, spatial Web Audio, and interior physics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
